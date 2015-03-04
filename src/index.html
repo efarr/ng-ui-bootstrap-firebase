@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="templateApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Template App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="styles/bootstrap.sandstone.min.css"/>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<div id="applicationHost" class="container body-content admin-appHost">
+    <div data-ng-include="'/app/layout/shell.html'"></div>
+</div>
+
+<div id="footer">
+    <div class="container">
+        <span class="pull-right text-info credit">Elite Schedule Admin - &copy; Steve Michelotti</span>
+    </div>
+</div>
+
+<!-- Vendor Scripts -->
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/angular-route/angular-route.min.js"></script>
+<script src="/bower_components/lodash/dist/lodash.min.js"></script>
+<script src="/bower_components/moment/min/moment.min.js"></script>
+<script src="/bower_components/spin.js/spin.js"></script>
+
+<!-- inject:js -->
+<!-- endinject -->
+
+
+</body>
+</html>
