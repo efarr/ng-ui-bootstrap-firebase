@@ -16,6 +16,14 @@
                 templateUrl: 'app/home/home.html',
                 controller: 'Home',
                 controllerAs: 'vm'
+            }).when('/page1', {
+                templateUrl: 'app/page1/page1.html',
+                controller: 'Page1',
+                controllerAs: 'vm'
+            }).when('/page2', {
+                templateUrl: 'app/page2/page2.html',
+                controller: 'Home',
+                controllerAs: 'vm'
             });
 
 
