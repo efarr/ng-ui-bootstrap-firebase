@@ -2,11 +2,12 @@
     'use strict';
     var app = angular.module('templateApp', [
         // Angular modules
-        'ngRoute'
+        'ngRoute',
 
         // 3rd Party Modules
+        'firebase'
 
-    ]);
+    ]).constant('FIREBASE_URL', 'https://efarr-1000.firebaseio.com/');
 
     app.config(['$routeProvider', configRoutes]);
 
@@ -15,6 +16,14 @@
             .when('/', {
                 templateUrl: 'app/home/home.html',
                 controller: 'Home',
+                controllerAs: 'vm'
+            }).when('/login', {
+                templateUrl: 'app/auth/login.html',
+                controller: 'Login',
+                controllerAs: 'vm'
+            }).when('/register', {
+                templateUrl: 'app/auth/register.html',
+                controller: 'Register',
                 controllerAs: 'vm'
             }).when('/page1', {
                 templateUrl: 'app/page1/page1.html',

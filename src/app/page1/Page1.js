@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    angular.module('templateApp').controller('Page1', Home);
+    angular.module('templateApp').controller('Page1', Page1);
 
     /* @ngInject */
-    function Home() {
+    function Page1() {
         /* jshint validthis: true */
         var vm = this;
 
