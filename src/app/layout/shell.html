@@ -15,12 +15,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/">Home</a></li>
-                    <li ng-hide="currentUser"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/login">Login</a></li>
-                    <li ng-hide="currentUser"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/register">Register</a></li>
-                    <li ng-show="currentUser"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page1">Page 1</a></li>
-                    <li ng-show="currentUser"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page2">Page 2</a></li>
+                    <li ng-hide="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/login">Login</a></li>
+                    <li ng-hide="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/register">Register</a></li>
+                    <li ng-show="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page1">Page 1</a></li>
+                    <li ng-show="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page2">Page 2</a></li>
                 </ul>
             </div>
+
 
         </div>
     </div>

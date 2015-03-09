@@ -3,18 +3,24 @@
 
     angular.module('templateApp').controller('Login', Login);
 
-    Login.$inject = ['Authentication'];
+    Login.$inject = ['Authentication', '$rootScope', '$location', '$firebaseAuth', 'FIREBASE_URL'];
 
     /* @ngInject */
-    function Login(Authentication) {
+    function Login(Authentication, $rootScope, $location, $firebaseAuth, FIREBASE_URL) {
         /* jshint validthis: true */
         var vm = this;
 
-        vm.message = "Hello, there!"
         vm.login = login;
 
         function login() {
-            Authentication.login(vm.user);
+            
+            var ref = new Firebase(FIREBASE_URL);
+            $rootScope.auth = $firebaseAuth(ref);
+
+            Authentication.login(vm.user).then(function(authData){
+                //alert("Logged in " + authData.uid);
+                $location.path('/');
+            }).catch(function(error){alert(error)});
         }
     }
 })();

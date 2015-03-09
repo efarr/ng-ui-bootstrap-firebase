@@ -1,7 +1,31 @@
 <div>
     <h2 class="page-title">Page 1</h2>
 
-    <p>
-        You made it to page 1.
+    <table>
+        <tr>
+            <td><input type="text" class="form-control" placeholder="Ticker Symbol" ng-model="vm.ticker"></td>
+            <td><button type="submit" class="btn btn-primary" ng-click="vm.getQuote()"
+                        tooltip="Get quote" tooltip-placement="left">
+                Lookup
+            </button></td></tr>
+    </table>
+
+    <table ng-show="vm.result" class="table table-bordered table-hover table-striped">
+        <tr>
+            <td>Equity:</td>
+            <td>{{vm.ticker}}</td>
+        </tr>
+        <tr>
+            <td>Latest Price:</td>
+            <td>{{vm.result.l}}</td>
+        </tr>
+        <tr>
+            <td>Last updated:</td>
+            <td>{{vm.result.lt}}</td>
+        </tr>
+    </table>
+
+
+
     </p>
 </div>
