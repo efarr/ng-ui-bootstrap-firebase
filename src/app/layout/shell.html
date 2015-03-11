@@ -15,13 +15,21 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a data-toggle="collapse" data-target=".navbar-collapse" href="#/">Home</a></li>
-                    <li ng-hide="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/login">Login</a></li>
                     <li ng-hide="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/register">Register</a></li>
                     <li ng-show="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page1">Page 1</a></li>
                     <li ng-show="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page2">Page 2</a></li>
                 </ul>
+                <span ng-show="auth.$getAuth()">{{auth.$getAuth().uid}}</span>
+                <form class="navbar-form navbar-right" role="form" ng-hide="auth.$getAuth()" ng-submit="vm.login()">
+                    <div class="form-group">
+                        <input type="text" placeholder="Email" class="form-control" ng-model="vm.user.email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" class="form-control" ng-model="vm.user.password">
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
             </div>
-
 
         </div>
     </div>

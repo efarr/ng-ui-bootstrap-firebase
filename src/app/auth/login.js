@@ -20,7 +20,12 @@
             Authentication.login(vm.user).then(function(authData){
                 //alert("Logged in " + authData.uid);
                 $location.path('/');
-            }).catch(function(error){alert(error)});
+            }).catch(function(error){
+                debugger
+                console.log(error);
+                var tmp = $rootScope.auth.getAuth();
+                console.log(tmp);
+            });
         }
     }
 })();
