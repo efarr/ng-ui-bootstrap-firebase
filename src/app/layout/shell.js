@@ -11,7 +11,7 @@
 
         vm.showSpinner = false;
         vm.spinnerMessage = 'Retrieving data...';
-        vm.login = login;
+        vm.logout = logout;
 
         vm.spinnerOptions = {
             radius: 40,
@@ -38,15 +38,9 @@
             }
         });
 
-        function login() {
-            Authentication.login(vm.user).then(function(authData){
-                //alert("Logged in " + authData.uid);
-                $location.path('/');
-            }).catch(function(error){
-                console.log(error);
-                var tmp = $rootScope.auth.getAuth();
-                console.log(tmp);
-            });
+        function logout() {
+            Authentication.logout();
+            $rootScope.email = "";
         }
     }
 })();

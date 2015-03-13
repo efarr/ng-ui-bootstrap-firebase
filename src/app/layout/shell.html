@@ -19,18 +19,21 @@
                     <li ng-show="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page1">Page 1</a></li>
                     <li ng-show="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page2">Page 2</a></li>
                 </ul>
-                <span ng-show="auth.$getAuth()">{{auth.$getAuth().uid}}</span>
-                <form class="navbar-form navbar-right" role="form" ng-hide="auth.$getAuth()" ng-submit="vm.login()">
-                    <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control" ng-model="vm.user.email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control" ng-model="vm.user.password">
-                    </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
-                </form>
-            </div>
+                <div ng-hide="auth.$getAuth()" class="navbar-right">
+                    <a type="button" href="#/login"  class="btn btn-lg btn-success navbar-btn" >Sign In</a>
+                </div>
 
+                <ul ng-show="auth.$getAuth()" class="nav navbar-nav navbar-right">
+                    <li dropdown>
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{auth.$getAuth().password.email}} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#/page1">Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href ng-click="vm.logout()">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 

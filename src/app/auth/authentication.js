@@ -6,6 +6,7 @@
     function Authentication($http, appSpinner, $rootScope, $firebaseAuth, FIREBASE_URL) {
         var service = {
             login: login,
+            logout: logout,
             register: register
         };
 
@@ -15,17 +16,11 @@
             return $rootScope.auth.$authWithPassword({
                 email: user.email,
                 password: user.password
-            }/*) .then(function(authData) {
-            }).catch( function(error) {
-                if (error = 'INVALID_EMAIL') {
-                    console.log('email invalid or not signed up — trying to sign you up!');
-                } else if (error = 'INVALID_PASSWORD') {
-                    console.log('wrong password!');
-                } else {
-                    console.log(error);
-                }
-            }*/
+            }
         )};
+
+        function logout(){
+            return $rootScope.auth.$unauth()};
 
         function register(user){
             var ref = new Firebase(FIREBASE_URL);
