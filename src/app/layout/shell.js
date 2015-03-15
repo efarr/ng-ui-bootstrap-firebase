@@ -41,6 +41,7 @@
         function logout() {
             Authentication.logout();
             $rootScope.email = "";
+            $location.path("/");
         }
     }
 })();

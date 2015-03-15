@@ -19,8 +19,9 @@
                     <li ng-show="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page1">Page 1</a></li>
                     <li ng-show="auth.$getAuth()"><a data-toggle="collapse" data-target=".navbar-collapse" href="#/page2">Page 2</a></li>
                 </ul>
+
                 <div ng-hide="auth.$getAuth()" class="navbar-right">
-                    <a type="button" href="#/login"  class="btn btn-lg btn-success navbar-btn" >Sign In</a>
+                    <a type="button" href="#/login"  class="btn btn-small btn-success navbar-btn sign-in" >Sign In</a>
                 </div>
 
                 <ul ng-show="auth.$getAuth()" class="nav navbar-nav navbar-right">
