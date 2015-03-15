@@ -3,7 +3,7 @@
 
     angular.module('templateApp').factory('Authentication', Authentication);
 
-    function Authentication($http, appSpinner, $rootScope, $firebaseAuth, FIREBASE_URL) {
+    function Authentication($http, appSpinner, $rootScope, $q, $timeout, $firebaseObject, $firebaseAuth, FIREBASE_URL) {
         var service = {
             login: login,
             logout: logout,
@@ -22,17 +22,44 @@
         function logout(){
             return $rootScope.auth.$unauth()};
 
-        function register(user){
+        function register(user) {
             var ref = new Firebase(FIREBASE_URL);
             var auth = $firebaseAuth(ref);
-            auth.$createUser({
+            return auth.$createUser({
                 email: user.email,
                 password: user.password
-            }).then(function(userData){
-                console.log("User " + userData.uid + " created successfully!");
-            }).catch(function(error){
-                console.error("Error: ", error);
-            });
+            })
+                .then(function () {
+                    // Authenticate so we can write profile data
+                    return login(user)})
+                .then(function (newUser) {
+                    user.uid = newUser.uid;
+                    return createProfile(user)})
+                .then(function () {
+                    return user;});
+
+
+            function createProfile(user)
+            {
+                var ref = new Firebase(FIREBASE_URL + 'users/' + user.uid );
+                var def = $q.defer();
+                ref.set(
+                    {
+                        email: user.email,
+                        firstname: user.firstname,
+                        lastname: user.lastname,
+                        date: Firebase.ServerValue.TIMESTAMP
+                    }, function(err) {
+                    $timeout(function() {
+                        if( err ) {
+                            def.reject(err);
+                        }
+                        else {
+                            def.resolve(ref);
+                        }
+                    })
+                });
+            }
         }
     }
 })();
