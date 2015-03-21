@@ -1,7 +1,41 @@
 <div>
-    <h2 class="page-title">Page 2</h2>
+    <h2 class="page-title">Your Meetings</h2>
 
-    <p>
-        You made it to page 2.
-    </p>
+
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+    <div ng-show="auth.$getAuth()" class="displaymeetings">
+        <table class="table table-striped">
+            <thead>
+                <th class="col-md-8">Meeting Name</th>
+                <th class="col-md-4"></th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <input type="text" class="form-control" name="meetingname" placeholder="Meeting Name"
+                           ng-model="vm.meetingname" ng-required="true">
+                </td>
+                <td>
+                    <button type="submit" class="btn btn-sm btn-primary" ng-click="vm.addMeeting()"
+                            tooltip="Click here to add new meeting" tooltip-placement="left">+</button>
+                </td>
+            </tr>
+            <tr ng-repeat="(key, meeting) in vm.meetings">
+                <td>{{meeting.name}}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary"
+                            ng-click="vm.deleteMeeting(key)">Details</button>
+                    <button confirmation-needed="Sure you want to delete the Meeting?"
+                            class="btn btn-sm btn-danger"
+                            ng-click="vm.deleteMeeting(key)">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    <div class="col-lg-3"></div>
+
+
 </div>

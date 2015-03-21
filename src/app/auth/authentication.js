@@ -3,7 +3,7 @@
 
     angular.module('templateApp').factory('Authentication', Authentication);
 
-    function Authentication($http, appSpinner, $rootScope, $q, $timeout, $firebaseObject, $firebaseAuth, FIREBASE_URL) {
+    function Authentication($rootScope, $q, $timeout, $firebaseAuth, FIREBASE_URL) {
         var service = {
             login: login,
             logout: logout,

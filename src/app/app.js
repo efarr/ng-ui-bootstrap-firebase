@@ -31,7 +31,7 @@
                 controllerAs: 'vm'
             }).when('/page2', {
                 templateUrl: 'app/page2/page2.html',
-                controller: 'Home',
+                controller: 'Page2',
                 controllerAs: 'vm'
             });
 
