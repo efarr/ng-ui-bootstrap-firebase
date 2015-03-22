@@ -33,7 +33,12 @@
                 templateUrl: 'app/page2/page2.html',
                 controller: 'Page2',
                 controllerAs: 'vm'
-            });
+            }).when('/page2detail/:uid/:meetingId', {
+                templateUrl: 'app/page2/page2detail.html',
+                controller: 'Page2Detail',
+                controllerAs: 'vm'
+            })
+        ;
 
 
         $routeProvider.otherwise('/');

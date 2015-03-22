@@ -13,20 +13,14 @@
         /* jshint validthis: true */
         var vm = this;
 
-        vm.activate = activate;
         vm.addMeeting = addMeeting;
         vm.title = 'Page2';
-
-        activate();
 
         ////////////////
         if ($rootScope.auth.$getAuth())
         {
             var meetingsRef = new Firebase(FIREBASE_URL + '/users/' + $rootScope.auth.$getAuth().uid + '/meetings');
             vm.meetings = $firebaseArray(meetingsRef);
-        }
-
-        function activate() {
         }
 
         function addMeeting() {
@@ -37,6 +31,5 @@
                 vm.meetingname = '';
             });
         }
-
     }
 })();
